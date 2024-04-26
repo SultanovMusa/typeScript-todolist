@@ -71,7 +71,6 @@ const TodoList: React.FC = () => {
 	return (
 		<>
 			<div className={scss.form}>
-				{/* <div className={scss.loader}></div> */}
 				<div className={scss.container}>
 					<h1>TodoList💫</h1>
 					<div className={scss.input_box}>
@@ -97,22 +96,20 @@ const TodoList: React.FC = () => {
 					</div>
 					<button onClick={postTodo}>Add</button>
 				</div>
+				<div className={scss.loader}></div>
 
 				{state.map((item) => (
 					<div key={item._id}>
 						{isEditId === item._id ? (
 							<div className={scss.car}>
 								<h2>📝</h2>
-								<div className={scss.input_box}>
-									<input
-										className={scss.inputs}
-										type="email"
-										value={nameInput}
-										onChange={(e) => setNameInput(e.target.value)}
-										placeholder="Email@❤️"
-									/>
-									<TbPasswordFingerprint className={scss.icon} />
-								</div>
+								<input
+									className={scss.inputs}
+									type="email"
+									value={nameInput}
+									onChange={(e) => setNameInput(e.target.value)}
+									placeholder="Email@❤️"
+								/>
 
 								<div className={scss.input_box}>
 									<input
@@ -122,10 +119,11 @@ const TodoList: React.FC = () => {
 										onChange={(e) => setPasswordInput(e.target.value)}
 										placeholder="Password🗽"
 									/>
-									<TbPasswordFingerprint className={scss.icon} />
 								</div>
-								<button onClick={() => patchTodo(item._id)}>Update</button>
-								<button onClick={() => setIsEditId(0)}>Cancel</button>
+								<div className={scss.btn}>
+									<button onClick={() => patchTodo(item._id)}>Update</button>
+									<button onClick={() => setIsEditId(0)}>Cancel</button>
+								</div>
 							</div>
 						) : (
 							<div className={scss.card}>
@@ -136,15 +134,17 @@ const TodoList: React.FC = () => {
 								<p>
 									Password🔐 <span>{item.password}</span>
 								</p>
-								<button onClick={() => deleteTodo(item._id)}>Delete</button>
-								<button
-									onClick={() => {
-										setIsEditId(item._id);
-										setNameInput(item.title);
-										setPasswordInput(item.password);
-									}}>
-									Edit
-								</button>
+								<div className={scss.btn}>
+									<button onClick={() => deleteTodo(item._id)}>Delete</button>
+									<button
+										onClick={() => {
+											setIsEditId(item._id);
+											setNameInput(item.title);
+											setPasswordInput(item.password);
+										}}>
+										Edit
+									</button>
+								</div>
 							</div>
 						)}
 					</div>
