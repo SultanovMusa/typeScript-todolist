@@ -70,84 +70,86 @@ const TodoList: React.FC = () => {
 	//! Return
 	return (
 		<>
-			{/* <div className={scss.loader}></div> */}
-			<div className={scss.container}>
-				<h1>TodoList💫</h1>
-				<div className={scss.input_box}>
-					<input
-						className={scss.input}
-						type="email"
-						value={render}
-						onChange={(e) => setRender(e.target.value)}
-						placeholder="Email@❤️"
-					/>
-					<CgUserlane className={scss.icon} />
+			<div className={scss.form}>
+				{/* <div className={scss.loader}></div> */}
+				<div className={scss.container}>
+					<h1>TodoList💫</h1>
+					<div className={scss.input_box}>
+						<input
+							className={scss.input}
+							type="email"
+							value={render}
+							onChange={(e) => setRender(e.target.value)}
+							placeholder="Email@❤️"
+						/>
+						<CgUserlane className={scss.icon} />
+					</div>
+
+					<div className={scss.input_box}>
+						<input
+							className={scss.input}
+							type="password"
+							value={passwordRender}
+							onChange={(e) => setPasswordRender(e.target.value)}
+							placeholder="Password🗽"
+						/>
+						<TbPasswordFingerprint className={scss.icon} />
+					</div>
+					<button onClick={postTodo}>Add</button>
 				</div>
 
-				<div className={scss.input_box}>
-					<input
-						className={scss.input}
-						type="password"
-						value={passwordRender}
-						onChange={(e) => setPasswordRender(e.target.value)}
-						placeholder="Password🗽"
-					/>
-					<TbPasswordFingerprint className={scss.icon} />
-				</div>
-				<button onClick={postTodo}>Add</button>
+				{state.map((item) => (
+					<div key={item._id}>
+						{isEditId === item._id ? (
+							<div className={scss.car}>
+								<h2>📝</h2>
+								<div className={scss.input_box}>
+									<input
+										className={scss.inputs}
+										type="email"
+										value={nameInput}
+										onChange={(e) => setNameInput(e.target.value)}
+										placeholder="Email@❤️"
+									/>
+									<TbPasswordFingerprint className={scss.icon} />
+								</div>
+
+								<div className={scss.input_box}>
+									<input
+										className={scss.inputs}
+										type="password"
+										value={passwordInput}
+										onChange={(e) => setPasswordInput(e.target.value)}
+										placeholder="Password🗽"
+									/>
+									<TbPasswordFingerprint className={scss.icon} />
+								</div>
+								<button onClick={() => patchTodo(item._id)}>Update</button>
+								<button onClick={() => setIsEditId(0)}>Cancel</button>
+							</div>
+						) : (
+							<div className={scss.card}>
+								<h3>🔥</h3>
+								<p>
+									Email🥷 <span>{item.title}</span>
+								</p>
+								<p>
+									Password🔐 <span>{item.password}</span>
+								</p>
+								<button onClick={() => deleteTodo(item._id)}>Delete</button>
+								<button
+									onClick={() => {
+										setIsEditId(item._id);
+										setNameInput(item.title);
+										setPasswordInput(item.password);
+									}}>
+									Edit
+								</button>
+							</div>
+						)}
+					</div>
+				))}
 			</div>
-			
-			{state.map((item) => (
-				<div key={item._id}>
-					{isEditId === item._id ? (
-						<div className={scss.car}>
-							<h2>📝</h2>
-							<div className={scss.input_box}>
-								<input
-									className={scss.inputs}
-									type="email"
-									value={nameInput}
-									onChange={(e) => setNameInput(e.target.value)}
-									placeholder="Email@❤️"
-								/>
-								<TbPasswordFingerprint className={scss.icon} />
-							</div>
-
-							<div className={scss.input_box}>
-								<input
-									className={scss.inputs}
-									type="password"
-									value={passwordInput}
-									onChange={(e) => setPasswordInput(e.target.value)}
-									placeholder="Password🗽"
-								/>
-								<TbPasswordFingerprint className={scss.icon} />
-							</div>
-							<button onClick={() => patchTodo(item._id)}>Update</button>
-							<button onClick={() => setIsEditId(0)}>Cancel</button>
-						</div>
-					) : (
-						<div className={scss.card}>
-							<h3>🔥</h3>
-							<p>
-								Email🥷 <span>{item.title}</span>
-							</p>
-							<p>
-								Password🔐 <span>{item.password}</span>
-							</p>
-							<button onClick={() => deleteTodo(item._id)}>Delete</button>
-							<button
-								onClick={() => {
-									setIsEditId(item._id);
-									setNameInput(item.title);
-									setPasswordInput(item.password);
-								}}>
-								Edit
-							</button>
-						</div>
-					)}
-				</div>
-			))}
 		</>
 	);
 };
