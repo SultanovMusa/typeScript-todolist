@@ -92,7 +92,7 @@
 		margin-top: 10rem;
 		padding: 2rem;
 		width: 20rem;
-		height: 25rem;
+		height: 20rem;
 		backdrop-filter: blur(2px);
 		border-radius: 1rem;
 		border: 2px solid rgba(16, 28, 11, 0.241);
@@ -142,7 +142,7 @@
 			font-size: 17px;
 		}
 		button {
-			margin-left: 2rem;
+			margin-left: 5rem;
 			color: red;
 			height: 2rem;
 			width: 6rem;
@@ -152,7 +152,7 @@
 		}
 		button:hover {
 			transition: 1s;
-			box-shadow: 5px 5px 10px 5px rgba(255, 0, 0, 0.619);
+			box-shadow: 5px 5px 15px 10px rgba(255, 0, 0, 0.619);
 			cursor: grab;
 		}
 	}
