@@ -70,9 +70,9 @@ const TodoList: React.FC = () => {
 	//! Return
 	return (
 		<>
+			{/* <div className={scss.loader}></div> */}
 			<div className={scss.container}>
 				<h1>TodoList💫</h1>
-
 				<div className={scss.input_box}>
 					<input
 						className={scss.input}
@@ -96,8 +96,7 @@ const TodoList: React.FC = () => {
 				</div>
 				<button onClick={postTodo}>Add</button>
 			</div>
-			<div className={scss.loader}></div>
-			{/*  */}
+			
 			{state.map((item) => (
 				<div key={item._id}>
 					{isEditId === item._id ? (
