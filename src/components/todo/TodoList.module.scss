@@ -87,11 +87,12 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+
 	.container {
 		margin-top: 10rem;
-		padding: 4%;
+		padding: 2rem;
 		width: 20rem;
-		height: 20rem;
+		height: 25rem;
 		backdrop-filter: blur(2px);
 		border-radius: 1rem;
 		border: 2px solid rgba(16, 28, 11, 0.241);
@@ -114,12 +115,11 @@
 		}
 
 		.input {
-			width: 13rem;
+			width: 15rem;
 			height: 10px;
 			height: 100%;
 			background: transparent;
 			outline: none;
-			//
 			border-radius: 15px;
 			color: #fff;
 			border: none;
@@ -142,16 +142,13 @@
 			font-size: 17px;
 		}
 		button {
-			// margin-top: 3rem;
-			margin-left: 3.5rem;
+			margin-left: 2rem;
 			color: red;
 			height: 2rem;
 			width: 6rem;
 			background: repeat;
 			border: none;
 			border-radius: 1rem;
-
-			color: rgba(207, 255, 255, 0.345);
 		}
 		button:hover {
 			transition: 1s;
